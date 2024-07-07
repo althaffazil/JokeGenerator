@@ -48,7 +48,7 @@ jobs:
 
 
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.prod.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
+          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem .\docker-compose.prod.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.prod.yml
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
