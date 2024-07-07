@@ -16,8 +16,7 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
     volumes:
       - .:/app
-    networks:
-      - webnet
+
 
   redis:
     image: redis:latest
@@ -39,5 +38,3 @@ services:
     depends_on:
       - web
 
-networks:
-  webnet:
