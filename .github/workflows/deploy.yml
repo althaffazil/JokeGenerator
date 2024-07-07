@@ -75,7 +75,7 @@ jobs:
           fi
           
           # Give docker permissions
-          sudo usermod -aG docker $USER && newgrp docker
+          sudo usermod -aG docker ubuntu && newgrp docker
           
           # Pulling the image
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
