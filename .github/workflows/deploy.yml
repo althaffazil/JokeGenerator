@@ -48,7 +48,7 @@ jobs:
 
 
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.prod.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.prod.yml
+          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.prod.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
@@ -80,6 +80,6 @@ jobs:
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           
           # Start or restart the containers
-          docker-compose -f ~/docker-compose.prod.yml up -d
+          docker-compose -f ~/docker-compose.yml up -d
           
           EOF
