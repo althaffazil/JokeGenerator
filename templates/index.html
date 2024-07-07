@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator</title>
+    <!-- Google Fonts CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Joke of the Day</h1>
+        <div class="alert alert-info" role="alert">
+            <p class="mb-1">{{ joke.setup }}</p>
+            <p class="lead"><strong>{{ joke.punchline }}</strong></p>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="window.location.reload();">Get Another Joke</button>
+        <div class="footer mt-4 text-muted">
+            Page Visits: {{ visit_count }}
+        </div>
+    </div>
+    <!-- Bootstrap JS and Popper via CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
