@@ -50,7 +50,7 @@ jobs:
 
         run: |
           rm -rf ~/docker-compose.yml
-          rm -rf ~/docker-stack.yml
+#          rm -rf ~/docker-stack.yml
           
           scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
 #          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-stack.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-stack.yml
