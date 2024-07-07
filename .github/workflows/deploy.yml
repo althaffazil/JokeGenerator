@@ -79,7 +79,7 @@ jobs:
           
           services:
             web:
-              image: ${{DOCKER_HUB_USERNAME }}/jokegenerator-web:latest
+              image: ${DOCKER_HUB_USERNAME}/jokegenerator-web:latest
               container_name: joke_web
               ports:
                 - "5000:5000"
@@ -112,7 +112,7 @@ jobs:
           EOF
 
           # Pull the image
-          docker pull ${{secrets.DOCKER_HUB_USERNAME }}/jokegenerator-web:latest
+          docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           
           # Start or restart the containers
           docker-compose up -d
