@@ -47,10 +47,6 @@ jobs:
 
         run: |
           scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
-          # Add these lines if you have these files
-#          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem ./nginx.conf ubuntu@${{ secrets.EC2_HOST }}:~/nginx.conf
-#          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem ./redis.conf ubuntu@${{ secrets.EC2_HOST }}:~/redis.conf
-
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
