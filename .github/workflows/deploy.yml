@@ -75,7 +75,7 @@ jobs:
           export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           
           # Create a docker-compose.yml file
-          cat <<EOF > docker-compose.yml
+          cat <<EOF > ~/docker-compose.yml
           version: '3.8'
           
           services:
