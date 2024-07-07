@@ -77,7 +77,7 @@ jobs:
           # Pulling the image
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           # Running the containers
-          docker compose up
+          docker-compose up
           
           EOF
           
