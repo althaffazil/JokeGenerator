@@ -78,9 +78,10 @@ jobs:
           sudo usermod -aG docker ubuntu && newgrp docker
           
           # Pulling the image
+          export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           # Running the containers
-          docker-compose up 
+          docker-compose -f ~/docker-compose.yml up 
           
           EOF
           
