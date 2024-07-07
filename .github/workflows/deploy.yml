@@ -77,7 +77,7 @@ jobs:
           export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           
           # Pull the image
-          docker pull $DOCKER_HUB_USERNAME/jokegenerator-web:latest
+          docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           
           # Start or restart the containers
           docker-compose -f ~/docker-compose.prod.yml up -d
