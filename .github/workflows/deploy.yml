@@ -74,6 +74,9 @@ jobs:
             echo "Docker Compose is already installed."
           fi
           
+          # Give docker permissions
+          sudo usermod -aG docker $USER && newgrp docker
+          
           # Pulling the image
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           # Running the containers
