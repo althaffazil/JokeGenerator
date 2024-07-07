@@ -1,0 +1,64 @@
+/* styles.css */
+
+/* Apply the Poppins font family */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 600;  /* Semi-bold weight */
+}
+
+p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+strong {
+    display: block;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #e74c3c;
+    font-weight: 600;  /* Semi-bold weight */
+}
+
+button {
+    background: #3498db;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #7f8c8d;
+}
