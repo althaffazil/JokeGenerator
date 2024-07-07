@@ -46,7 +46,11 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
 
         run: |
-          
+          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
+          # Add these lines if you have these files
+#          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem ./nginx.conf ubuntu@${{ secrets.EC2_HOST }}:~/nginx.conf
+#          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem ./redis.conf ubuntu@${{ secrets.EC2_HOST }}:~/redis.conf
+
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
@@ -73,44 +77,7 @@ jobs:
           sudo usermod -aG docker ubuntu && newgrp docker
           export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           
-          # Create a docker-compose.yml file
-          cat <<EOF > docker-compose.yml
-          version: '3.8'
           
-          services:
-            web:
-              image: ${DOCKER_HUB_USERNAME}/jokegenerator-web:latest
-              container_name: joke_web
-              ports:
-                - "5000:5000"
-              depends_on:
-                - redis
-              environment:
-                - FLASK_APP=app.py
-                - FLASK_RUN_HOST=0.0.0.0
-              volumes:
-                - .:/app
-
-            redis:
-              image: redis:latest
-              container_name: joke_redis
-              ports:
-                - "6379:6379"
-              command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-              volumes:
-                - ./redis.conf:/usr/local/etc/redis/redis.conf
-
-            nginx:
-              image: nginx:latest
-              container_name: nginx
-              ports:
-                - "80:80"
-              volumes:
-                - ./nginx.conf:/etc/nginx/nginx.conf
-              depends_on:
-                - web
-          EOF
-
           # Pull the image
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           
