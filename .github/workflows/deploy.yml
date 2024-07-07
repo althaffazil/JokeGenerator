@@ -48,7 +48,7 @@ jobs:
 
 
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
+          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.prod.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
@@ -74,12 +74,12 @@ jobs:
           # Give Docker permissions
           sudo usermod -aG docker ubuntu && newgrp docker
           
-          
+          export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           
           # Pull the image
           docker pull $DOCKER_HUB_USERNAME/jokegenerator-web:latest
           
           # Start or restart the containers
-          docker-compose up -d
+          docker-compose -f ~/docker-compose.prod.yml up -d
           
           EOF
