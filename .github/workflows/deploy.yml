@@ -68,8 +68,8 @@ jobs:
           if ! command -v docker-compose &> /dev/null
           then
             echo "Docker Compose is not installed. Installing Docker Compose..."
-          sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
+            sudo curl -L "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
           else
             echo "Docker Compose is already installed."
           fi
@@ -80,7 +80,7 @@ jobs:
           # Pulling the image
           docker pull \$DOCKER_HUB_USERNAME/jokegenerator-web:latest
           # Running the containers
-          docker-compose up
+          docker-compose up 
           
           EOF
           
