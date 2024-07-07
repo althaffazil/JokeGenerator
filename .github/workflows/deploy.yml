@@ -46,7 +46,7 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
 
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/ec2-key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
+          
           ssh -o StrictHostKeyChecking=no -i ~/ec2-key.pem ubuntu@${{ secrets.EC2_HOST }} << EOF
 
           # Install Docker if not installed
@@ -74,7 +74,7 @@ jobs:
           export DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           
           # Create a docker-compose.yml file
-          cat <<EOF > ~/docker-compose.yml
+          cat <<EOF > docker-compose.yml
           version: '3.8'
           
           services:
